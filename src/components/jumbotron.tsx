@@ -12,7 +12,7 @@ export default function Jumbotron() {
   // const result = heavyCalculation();
 
   /*
-    Without using useMemo: everytime another event is triggered, no matter what the state variables are, will also get re-rendered
+    Without using useMemo: everytime another event is triggered, no matter what the state variables are, the component based on that state will also get re-rendered
   */
 
   // Caching using useMemo
