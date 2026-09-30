@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 export interface User {
   id: number;
@@ -14,6 +15,8 @@ export interface PostComment {
   likes: number;
   user: User;
 }
+
+const reactQuery = new QueryClient();
 
 const CommentsPage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -35,24 +38,26 @@ const CommentsPage = () => {
   }
   
   return (
-    <>
-      <h1>List of all comments</h1>
-      {
-        data.map((comment: PostComment, index: number) => (
-          <div key={index} style={{
-            display: "flex",
-            flexDirection: "column",
-            margin: "8px 0"
-          }}>
-            <h1>{comment.body}</h1>
-            <div>
-              <p>Username: {comment.user.username}</p>
-              <p>Likes: {comment.likes}</p>
+    <QueryClientProvider client={reactQuery}>
+      <>
+        <h1>List of all comments</h1>
+        {
+          data.map((comment: PostComment, index: number) => (
+            <div key={index} style={{
+              display: "flex",
+              flexDirection: "column",
+              margin: "8px 0"
+            }}>
+              <h1>{comment.body}</h1>
+              <div>
+                <p>Username: {comment.user.username}</p>
+                <p>Likes: {comment.likes}</p>
+              </div>
             </div>
-          </div>
-        ))
-      }
-    </>
+          ))
+          }
+      </>
+    </QueryClientProvider>
   );
 };
 
