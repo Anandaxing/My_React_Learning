@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 export interface User {
@@ -15,30 +15,21 @@ export interface PostComment {
   user: User;
 }
 
-const CommentsPage = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState([]);
+export default function RQCommentsPage() {
+  const {isLoading, data} = useQuery({
+    queryKey: ['user-comments'], 
+    queryFn: () => {
+      return axios.get("http://localhost:3001/comments");
+    }
+  });
 
-  useEffect(() => {
-    axios.get("http://localhost:3001/comments").then((res) => {
-      setData(res.data);
-      setIsLoading(false);
-    })
-  }, []);
-
-  if (isLoading) {
-    return (
-      <h2>
-        Fetching your data...
-      </h2>
-    )
-  }
+  if(isLoading) return <h1>Fetching data...</h1>
+  console.log(data);
   
   return (
       <>
-        <h1>List of all comments</h1>
         {
-          data.map((comment: PostComment, index: number) => (
+          data?.data.map((comment: PostComment, index: number) => (
             <div key={index} style={{
               display: "flex",
               flexDirection: "column",
@@ -54,6 +45,4 @@ const CommentsPage = () => {
           }
       </>
   );
-};
-
-export default CommentsPage;
+};  
