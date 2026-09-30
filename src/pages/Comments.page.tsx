@@ -18,11 +18,14 @@ export interface PostComment {
 const CommentsPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    axios.get("http://localhost:3001/comments").then((res) => {
+    axios.get("http://localhost:3001/comment").then((res) => {
       setData(res.data);
       setIsLoading(false);
+    }).catch((error) => {
+      setError(error.message);
     })
   }, []);
 
@@ -30,6 +33,14 @@ const CommentsPage = () => {
     return (
       <h2>
         Fetching your data...
+      </h2>
+    )
+  }
+
+  if (error) {
+    return (
+      <h2>
+        Data fetching has failed {error}
       </h2>
     )
   }

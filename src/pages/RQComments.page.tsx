@@ -16,7 +16,7 @@ export interface PostComment {
 }
 
 export default function RQCommentsPage() {
-  const {isLoading, data} = useQuery({
+  const {isLoading, data, isError, error} = useQuery({
     queryKey: ['user-comments'], 
     queryFn: () => {
       return axios.get("http://localhost:3001/comments");
@@ -24,7 +24,8 @@ export default function RQCommentsPage() {
   });
 
   if(isLoading) return <h1>Fetching data...</h1>
-  console.log(data);
+
+  if (isError) return <h1>Error: {error.message}</h1>
   
   return (
       <>
