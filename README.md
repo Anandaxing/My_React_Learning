@@ -12,4 +12,10 @@ This is a component where I learned about useMemo, meaning that it prevents over
 
 ```bash
 npx json-server db.json
+
+# or
+
+npm run serve-json 
+# This running command is created inside package json with port 3001
+
 ```
