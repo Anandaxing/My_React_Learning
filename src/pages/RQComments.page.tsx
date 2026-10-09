@@ -16,12 +16,14 @@ export interface PostComment {
 }
 
 export default function RQCommentsPage() {
-  const {isLoading, data, isError, error} = useQuery({
+  const {isLoading, data, isError, error, isFetching} = useQuery({
     queryKey: ['user-comments'], 
     queryFn: () => {
       return axios.get("http://localhost:3001/comments");
     }
   });
+
+  console.log("The react query is fetching: ", isFetching);
 
   if(isLoading) return <h1>Fetching data...</h1>
 

@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import CommentsPage from './pages/Comments.page';
 import RQCommentsPage from './pages/RQComments.page';
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import CardComponent from './components/card';
 
 const reactQuery = new QueryClient();
 
@@ -15,6 +16,7 @@ function App() {
       <h1>Hello world</h1>
       <Jumbotron />
       <Article />
+      <CardComponent />
     </div>
   )
 
