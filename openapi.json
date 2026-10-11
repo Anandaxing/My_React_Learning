@@ -1,0 +1,35 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "TO DO LIST RESTFUL API",
+    "version": "0.0.1",
+    "description": "RESTFUL API documentation for To do list application",
+    "termsOfService": "https://www.programmerzamannow.com",
+    "contact": {
+      "name": "Eko Kurniawan",
+      "email": "ekokuniawayankhannedy@gmail.com"
+    }, 
+    "license": {
+      "name": "APACHE 2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0"
+    }
+  },
+  "servers": [
+    {
+      "description": "TO do list RESTFUL API server",
+      "url": "https://{environment}.programmerzamannow.com/api/v1",
+      "variables": {
+        "environment": {
+          "description": "Server environment",
+          "default": "dev",
+          "enum": [
+            "dev",
+            "qa",
+            "prod"
+          ]
+        }
+      }
+    }
+  ],
+  "paths": {}
+}
