@@ -8,6 +8,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import CardComponent from './components/card';
 import Layout from './components/layout';
 import Child from './components/child';
+import ToolBar from './toolbar/toolbar';
 
 const reactQuery = new QueryClient();
 
@@ -25,6 +26,11 @@ function App() {
         <Article />
         <CardComponent />
         <Child onSmash={onSmash} /> 
+        <ToolBar onClick={(e: any) => {
+          // stop propagation is used to prevent duplicated calls to the same method in nested components
+          e.stopPropagation();
+          alert("You have clicked the toolbar component")
+        }} />
       </Layout>
     </div>
   )
