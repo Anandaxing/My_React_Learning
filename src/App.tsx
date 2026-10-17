@@ -6,6 +6,7 @@ import CommentsPage from './pages/Comments.page';
 import RQCommentsPage from './pages/RQComments.page';
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import CardComponent from './components/card';
+import Layout from './components/layout';
 
 const reactQuery = new QueryClient();
 
@@ -14,9 +15,11 @@ function App() {
   const HomePage = (
     <div className="mainContainer">
       <h1>Hello world</h1>
-      <Jumbotron />
-      <Article />
-      <CardComponent />
+      <Layout>
+        <Jumbotron />
+        <Article />
+        <CardComponent />
+      </Layout>
     </div>
   )
 
