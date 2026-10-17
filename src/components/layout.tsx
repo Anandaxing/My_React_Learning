@@ -1,6 +1,18 @@
 import React from "react";
 
-const Layout = ({children}: React.ReactNode) => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
+  // pure function
+  // function multiply(num: number) {
+  //   return num * 2;
+  // }
+
+  // non pure function
+  // let count = 0;
+  // function increment() {
+  //   count++;
+  //   return count;
+  // }
+  
   return (
     <>
       <div>

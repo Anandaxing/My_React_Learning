@@ -7,10 +7,15 @@ import RQCommentsPage from './pages/RQComments.page';
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import CardComponent from './components/card';
 import Layout from './components/layout';
+import Child from './components/child';
 
 const reactQuery = new QueryClient();
 
 function App() {
+
+  function onSmash() {
+    alert("The function has been called");
+  }
 
   const HomePage = (
     <div className="mainContainer">
@@ -19,6 +24,7 @@ function App() {
         <Jumbotron />
         <Article />
         <CardComponent />
+        <Child onSmash={onSmash} /> 
       </Layout>
     </div>
   )

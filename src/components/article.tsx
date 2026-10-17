@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
 
 type ChildProps = {
-  callback: Function;
+  callback: () => void;
   text: string;
 };
 
